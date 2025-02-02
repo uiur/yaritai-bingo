@@ -9,11 +9,14 @@ function App() {
   const [tasks, setTasks] = useState(() => {
     const saved = localStorage.getItem("tasks");
     if (saved) return JSON.parse(saved);
-    return defaultTasks.map((text, index) => ({
-      id: index,
-      text,
-      checked: false
-    }));
+    return [...defaultTasks]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 9)
+      .map((text, index) => ({
+        id: index,
+        text,
+        checked: false
+      }));
   });
 
   const [editingIndex, setEditingIndex] = useState(null);
