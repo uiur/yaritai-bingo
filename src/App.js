@@ -1,29 +1,10 @@
 // App.js
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import defaultTasks from "./defaultTasks";
 
 function App() {
-  const defaultTasks = [
-    "スカイダイビングに挑戦",
-    "世界一周旅行を計画",
-    "新しい言語をマスター",
-    "料理の達人に挑戦",
-    "ボランティア活動に参加",
-    "自作ゲームをリリース",
-    "山登りで絶景を堪能",
-    "アート作品を制作",
-    "自転車で日本一周",
-    "自分だけの小説を書く",
-    "楽器を始める",
-    "マラソン大会に参加",
-    "写真コンテストに挑戦",
-    "プログラミングの新プロジェクトを開始",
-    "地元の観光スポットを巡る",
-    "ペットと一緒にアウトドア体験",
-    "手作りの家具を作る",
-    "新しいレストランでグルメ体験",
-    "ボディビルに挑戦"
-  ];
+  
 
   const [tasks, setTasks] = useState(() => {
     const saved = localStorage.getItem("tasks");
