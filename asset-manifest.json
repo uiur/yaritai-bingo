@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/yaritai-bingo/static/css/main.bad58b25.css",
-    "main.js": "/yaritai-bingo/static/js/main.33c6fcd9.js",
+    "main.css": "/yaritai-bingo/static/css/main.b5bbd025.css",
+    "main.js": "/yaritai-bingo/static/js/main.39359cfe.js",
     "index.html": "/yaritai-bingo/index.html",
-    "main.bad58b25.css.map": "/yaritai-bingo/static/css/main.bad58b25.css.map",
-    "main.33c6fcd9.js.map": "/yaritai-bingo/static/js/main.33c6fcd9.js.map"
+    "main.b5bbd025.css.map": "/yaritai-bingo/static/css/main.b5bbd025.css.map",
+    "main.39359cfe.js.map": "/yaritai-bingo/static/js/main.39359cfe.js.map"
   },
   "entrypoints": [
-    "static/css/main.bad58b25.css",
-    "static/js/main.33c6fcd9.js"
+    "static/css/main.b5bbd025.css",
+    "static/js/main.39359cfe.js"
   ]
 }
