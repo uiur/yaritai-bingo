@@ -67,6 +67,7 @@ button:hover {
   box-shadow: none;
   text-transform: none;
   letter-spacing: 0;
+  margin-right: 10px;
 }
 
 .shuffle-button:hover {

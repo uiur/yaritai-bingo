@@ -81,6 +81,20 @@ function App() {
     setTasks(shuffled);
   };
 
+  const resetTasks = () => {
+    // confirm
+    if (!window.confirm("本当にリセットしますか？")) return;
+    const shuffled = [...defaultTasks]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 9)
+      .map((text, index) => ({
+        id: index,
+        text,
+        checked: false
+      }));
+    setTasks(shuffled);
+  }
+
   return (
     <div className="app">
       <div style={{ height: "2.5em", display:"flex", alignItems:"center", justifyContent:"center", boxSizing:"border-box", marginBottom: 12 }}>
@@ -100,7 +114,9 @@ function App() {
           </h1>
         )}
       </div>
+
       <button className="shuffle-button" onClick={shuffleTasks}>シャッフル</button>
+      <button className="shuffle-button" onClick={resetTasks}>リセット</button>
 
       <div className="bingo-card">
         {tasks.map((task, index) => (
