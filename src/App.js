@@ -4,8 +4,6 @@ import "./App.css";
 import defaultTasks from "./defaultTasks";
 
 function App() {
-  
-
   const [tasks, setTasks] = useState(() => {
     const saved = localStorage.getItem("tasks");
     if (saved) return JSON.parse(saved);
@@ -97,7 +95,7 @@ function App() {
             style={{ fontSize: "2em", fontWeight:"bold", textAlign:"center", width:"100%", height:"100%", lineHeight:"2.5em", padding:"0", margin:"0", border: "none", outline: "none", background: "transparent" }}
           />
         ) : (
-          <h1 onClick={() => { setEditingTitle(true); setTitleText(title); }} style={{ fontSize:"2em", fontWeight:"bold", textAlign:"center", margin:0, lineHeight:"2.5em" }}>
+          <h1 onClick={() => { setEditingTitle(true); setTitleText(title); }} style={{ fontSize:"2em", fontWeight:"bold", textAlign:"center", margin:0 }}>
             {title}
           </h1>
         )}
@@ -116,10 +114,6 @@ function App() {
             </div>
             <div
               className="cell-content"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleEditClick(index);
-              }}
             >
               {editingIndex === index ? (
                 <input
@@ -128,10 +122,18 @@ function App() {
                   onChange={e => setEditingText(e.target.value)}
                   onBlur={() => handleInputBlur(index)}
                   onKeyDown={e => handleInputKeyDown(e, index)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
                   autoFocus
                 />
               ) : (
-                task.text
+                <div onClick={(e) => {
+                  e.stopPropagation();
+                  handleEditClick(index);
+                }}>
+                  { task.text.length === 0 ? "未入力" : task.text }
+                </div>
               )}
             </div>
           </div>
