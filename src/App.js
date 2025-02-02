@@ -118,12 +118,13 @@ function App() {
           </h1>
         )}
       </div>
-      <button onClick={shuffleTasks}>シャッフル</button>
+      <button className="shuffle-button" onClick={shuffleTasks}>シャッフル</button>
+
       <div className="bingo-card">
         {tasks.map((task, index) => (
           <div
             key={index}
-            className={`cell ${bingoCells.has(index) ? "bingo" : ""}`}
+            className={`cell ${bingoCells.has(index) ? "bingo" : ""} ${task.checked ? "checked" : ""}`}
             onClick={() => handleCheckToggle(index)}
           >
             <div className="cell-check">

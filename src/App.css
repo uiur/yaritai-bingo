@@ -1,111 +1,204 @@
 /* App.css */
-
-/* カラーパレットと基本設定 */
 :root {
-  --primary-color: #6200ee;
-  --primary-hover: #3700b3;
-  --background-color: #f9f9f9;
+  --primary-color: #FF6B6B;
+  --primary-hover: #FF5252;
+  --background-color: #F8F9FA;
   --cell-bg: #ffffff;
-  --cell-border: #e0e0e0;
-  --bingo-bg: #bbdefb;
-  --font-color: #333333;
-  --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  --shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --cell-border: #FFE0E0;
+  --bingo-bg: #FFE8E8;
+  --font-color: #2D3436;
+  --shadow: 0 4px 6px rgba(255, 107, 107, 0.1);
+  --shadow-hover: 0 8px 15px rgba(255, 107, 107, 0.2);
 }
 
 body, html {
   margin: 0;
   padding: 0;
   background: var(--background-color);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  color: var(--font-color);
 }
 
-/* タイトル */
-h1 {
-  font-size: 2em;
-  color: var(--primary-color);
-  margin-bottom: 20px;
-}
-
-/* アプリ全体 */
 .app {
   text-align: center;
-  padding: 40px 10px;
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* ボタン */
+h1 {
+  font-size: 2.5em;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(255, 107, 107, 0.1);
+}
+
 button {
   background: var(--primary-color);
   color: #fff;
   border: none;
-  border-radius: 24px;
-  padding: 12px 24px;
-  font-size: 16px;
+  border-radius: 30px;
+  padding: 15px 35px;
+  font-size: 18px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
   box-shadow: var(--shadow);
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 button:hover {
   background: var(--primary-hover);
-}
-
-/* ビンゴカードのグリッド */
-.bingo-card {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-/* セル */
-.cell {
-  background: var(--cell-bg);
-  border: 1px solid var(--cell-border);
-  border-radius: 8px;
-  position: relative;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.cell:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
 }
 
+/* シャッフルボタン用のスタイル */
+.shuffle-button {
+  background: transparent;
+  color: #888;
+  border: 1px solid #ddd;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: normal;
+  box-shadow: none;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.shuffle-button:hover {
+  background: #f5f5f5;
+  color: #666;
+  transform: none;
+  box-shadow: none;
+}
+
+.bingo-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cell {
+  background: var(--cell-bg);
+  border: 2px solid var(--cell-border);
+  border-radius: 16px;
+  position: relative;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.cell:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-color);
+}
+
 .cell.bingo {
   background: var(--bingo-bg);
+  border-color: var(--primary-color);
+  animation: bingoPulse 2s infinite;
 }
 
-/* チェックマーク */
+@keyframes bingoPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
 .cell-check {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  font-size: 20px;
+  top: 12px;
+  right: 12px;
+  font-size: 24px;
   color: var(--primary-color);
+  transform: scale(1);
+  transition: all 0.3s ease;
+  opacity: 0;
 }
 
-/* セルのテキスト部分 */
+.cell.checked .cell-check {
+  opacity: 1;
+}
+
 .cell-content {
-  font-size: 16px;
+  font-size: 18px;
   color: var(--font-color);
   font-weight: 500;
   text-align: center;
+  padding: 15px;
+  width: 100%;
+  transition: all 0.3s ease;
 }
 
 .cell-content input {
   width: 90%;
   border: none;
   outline: none;
-  font-size: 16px;
+  font-size: 18px;
   color: var(--font-color);
   text-align: center;
   background: transparent;
+  font-family: 'Poppins', sans-serif;
+  padding: 8px;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+  .bingo-card {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .cell {
+    height: 120px;
+  }
+
+  .cell-content {
+    font-size: 16px;
+  }
+
+  button {
+    padding: 12px 28px;
+    font-size: 16px;
+  }
+}
+
+/* SNSシェアボタン */
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.share-button {
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.share-twitter {
+  background: #1DA1F2;
+}
+
+.share-line {
+  background: #00B900;
 }
