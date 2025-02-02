@@ -21,9 +21,9 @@ function App() {
 
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingText, setEditingText] = useState("");
-  const [title, setTitle] = useState("やりたいことビンゴ");
+  const [title, setTitle] = useState(`やりたいことビンゴ${new Date().getFullYear()}`);
   const [editingTitle, setEditingTitle] = useState(false);
-  const [titleText, setTitleText] = useState("やりたいことビンゴ");
+  const [titleText, setTitleText] = useState(`やりたいことビンゴ${new Date().getFullYear()}`);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
