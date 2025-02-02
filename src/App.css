@@ -30,7 +30,7 @@ h1 {
 /* アプリ全体 */
 .app {
   text-align: center;
-  padding: 40px 20px;
+  padding: 40px 10px;
 }
 
 /* ボタン */
@@ -55,7 +55,7 @@ button:hover {
 .bingo-card {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 8px;
   max-width: 500px;
   margin: 0 auto;
 }

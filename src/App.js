@@ -37,6 +37,9 @@ function App() {
 
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingText, setEditingText] = useState("");
+  const [title, setTitle] = useState("やりたいことビンゴ");
+  const [editingTitle, setEditingTitle] = useState(false);
+  const [titleText, setTitleText] = useState("やりたいことビンゴ");
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -98,7 +101,23 @@ function App() {
 
   return (
     <div className="app">
-      <h1>やりたいことビンゴ</h1>
+      <div style={{ height: "2.5em", display:"flex", alignItems:"center", justifyContent:"center", boxSizing:"border-box", marginBottom: 12 }}>
+        {editingTitle ? (
+          <input 
+            type="text" 
+            value={titleText} 
+            onChange={e => setTitleText(e.target.value)} 
+            onBlur={() => { setTitle(titleText); setEditingTitle(false); }} 
+            onKeyDown={e => { if (e.key === "Enter") { setTitle(titleText); setEditingTitle(false); } }} 
+            autoFocus
+            style={{ fontSize: "2em", fontWeight:"bold", textAlign:"center", width:"100%", height:"100%", lineHeight:"2.5em", padding:"0", margin:"0", border: "none", outline: "none", background: "transparent" }}
+          />
+        ) : (
+          <h1 onClick={() => { setEditingTitle(true); setTitleText(title); }} style={{ fontSize:"2em", fontWeight:"bold", textAlign:"center", margin:0, lineHeight:"2.5em" }}>
+            {title}
+          </h1>
+        )}
+      </div>
       <button onClick={shuffleTasks}>シャッフル</button>
       <div className="bingo-card">
         {tasks.map((task, index) => (
