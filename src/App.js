@@ -97,7 +97,7 @@ function App() {
 
   return (
     <div className="app">
-      <div style={{ height: "2.5em", display:"flex", alignItems:"center", justifyContent:"center", boxSizing:"border-box", marginBottom: 24 }}>
+      <div className="title-container">
         {editingTitle ? (
           <input 
             type="text" 
@@ -106,10 +106,10 @@ function App() {
             onBlur={() => { setTitle(titleText); setEditingTitle(false); }} 
             onKeyDown={e => { if (e.key === "Enter") { setTitle(titleText); setEditingTitle(false); } }} 
             autoFocus
-            style={{ fontSize: "2em", fontWeight:"bold", textAlign:"center", width:"100%", height:"100%", lineHeight:"2.5em", padding:"0", margin:"0", border: "none", outline: "none", background: "transparent" }}
+            className="title-input"
           />
         ) : (
-          <h1 onClick={() => { setEditingTitle(true); setTitleText(title); }} style={{ fontSize:"2em", fontWeight:"bold", textAlign:"center", margin:0 }}>
+          <h1 onClick={() => { setEditingTitle(true); setTitleText(title); }} className="title-text">
             {title}
           </h1>
         )}
@@ -156,8 +156,8 @@ function App() {
         ))}
       </div>
 
-      <footer style={{ textAlign: 'center', marginTop: '20px', padding: '10px' }}>
-        <a href="https://x.com/uiu______" style={{ fontSize: '14px', color: '#888', textDecoration: 'none' }} target="_blank">
+      <footer className="footer">
+        <a href="https://x.com/uiu______" className="footer-link" target="_blank">
           @uiu
         </a>
       </footer>
