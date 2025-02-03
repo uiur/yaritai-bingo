@@ -97,7 +97,7 @@ function App() {
 
   return (
     <div className="app">
-      <div style={{ height: "2.5em", display:"flex", alignItems:"center", justifyContent:"center", boxSizing:"border-box", marginBottom: 12 }}>
+      <div style={{ height: "2.5em", display:"flex", alignItems:"center", justifyContent:"center", boxSizing:"border-box", marginBottom: 24 }}>
         {editingTitle ? (
           <input 
             type="text" 
@@ -155,6 +155,12 @@ function App() {
           </div>
         ))}
       </div>
+
+      <footer style={{ textAlign: 'center', marginTop: '20px', padding: '10px' }}>
+        <a href="https://x.com/uiu______" style={{ fontSize: '14px', color: '#888', textDecoration: 'none' }} target="_blank">
+          @uiu
+        </a>
+      </footer>
     </div>
   );
 }
